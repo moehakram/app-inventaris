@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateInventarisRequest extends FormRequest
+class AsetUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,11 +22,11 @@ class CreateInventarisRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:15'],
-            'kondisi' => ['required', 'max:15'],
+            'nama' => ['nullable', 'max:15'],
+            'kondisi' => ['nullable', 'max:15'],
             'keterangan' => ['nullable', 'max:30'],
-            'stok' => 'required',
-            'jenis' => 'required',
+            'stok' => 'nullable',
+            'lokasi_id' => 'nullable',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg'
         ];
     }

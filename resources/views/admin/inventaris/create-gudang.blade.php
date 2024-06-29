@@ -13,7 +13,7 @@
     <form class="forms-sample" method="POST" action="{{route('ruang.store')}}">
           @csrf
           <div class="form-group row">
-            <label for="nama_ruang" class="col-sm-3 col-form-label">NAMA RUANG</label>
+            <label for="nama_ruang" class="col-sm-3 col-form-label">NAMA GUDANG</label>
             <div class="col-sm-9">
               <input type="text" name="nama_ruang" class="form-control" id="nama_ruang" value="{{old('nama_ruang')}}" placeholder="nama ruang">
               @error('nama_ruang')

@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class RuangSeeder extends Seeder
+class LokasiSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,37 +16,38 @@ class RuangSeeder extends Seeder
     {
         $data = [
             [
-                'nama_ruang' => 'Ruang Rapat',
-                'keterangan' => 'Digunakan untuk rapat dan pertemuan',
+                'nama' => 'SEKRETARIAT OSIS',
+                'keterangan' => 'Ruang sekretariat untuk OSIS',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama_ruang' => 'Ruang Kerja',
-                'keterangan' => 'Tempat kerja karyawan',
+                'nama' => 'SEKRETARIAT PRAMUKA',
+                'keterangan' => 'Ruang sekretariat untuk Pramuka',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama_ruang' => 'Ruang Presentasi',
-                'keterangan' => 'Ruang untuk presentasi dan pelatihan',
+                'nama' => 'SEKRETARIAT ROHIS',
+                'keterangan' => 'Ruang sekretariat untuk Rohis',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama_ruang' => 'Ruang IT',
-                'keterangan' => 'Ruang untuk tim IT',
+                'nama' => 'SEKRETARIAT PASKIB',
+                'keterangan' => 'Ruang sekretariat untuk Paskibra',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama_ruang' => 'Ruang Admin',
-                'keterangan' => 'Ruang administrasi',
+                'nama' => 'SEKRETARIAT PMR',
+                'keterangan' => 'Ruang sekretariat untuk PMR',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ],
+            ]
         ];
+        
 
-        DB::table('ruang')->insert($data);
+        DB::table('lokasi')->insert($data);
     }
 }

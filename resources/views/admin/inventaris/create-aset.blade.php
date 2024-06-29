@@ -49,7 +49,7 @@
             </div>
           </div>
 
-          <div class="form-group row">
+          {{-- <div class="form-group row">
             <label for="jenis" class="col-sm-3 col-form-label">KATEGORI</label>
             <div class="col-sm-9">
               <select class="form-control" id="jenis" name="jenis">
@@ -61,13 +61,13 @@
                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
               @enderror
             </div>
-          </div>
+          </div> --}}
           <div class="form-group row">
             <label for="ruang" class="col-sm-3 col-form-label">GUDANG</label>
             <div class="col-sm-9">
               <select class="form-control" id="ruang" name="ruang">
                 @foreach ($ruang as $item)
-                <option value="{{$item->nama_ruang}}">{{$item->nama_ruang}}</option>
+                <option value="{{$item->ruang_id}}">{{$item->nama_ruang}}</option>
                 @endforeach
               </select>
               @error('ruang')

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateInventarisRequest extends FormRequest
+class AsetCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,10 @@ class UpdateInventarisRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['nullable', 'max:15'],
-            'kondisi' => ['nullable', 'max:15'],
+            'name' => ['required', 'max:15'],
+            'kondisi' => ['required', 'max:15'],
             'keterangan' => ['nullable', 'max:30'],
-            'stok' => 'nullable',
-            'jenis' => 'nullable',
+            'stok' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg'
         ];
     }

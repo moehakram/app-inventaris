@@ -72,9 +72,9 @@
                                         <th>
                                             Stok
                                         </th>
-                                        <th>
+                                        {{-- <th>
                                             Kategori
-                                        </th>
+                                        </th> --}}
                                         <th>
                                             Tanggal Register
                                         </th>
@@ -98,7 +98,7 @@
                                         <td>{{$invent->kondisi}}</td>
                                         <td>{{$invent->keterangan}}</td>
                                         <td>{{$invent->stok}}</td>
-                                        <td>{{$invent->jenis}}</td>
+                                        {{-- <td>{{$invent->jenis}}</td> --}}
                                         <td>{{$invent->created_at}}</td>
                                         <td>{{$invent->ruang}}</td>
                                         <td><img class="thumbnail" data-fullsize="{{url('aset-inventaris/' .$invent->foto)}}" style="width: 50px; cursor: pointer;" src="{{url('aset-inventaris/' .$invent->foto)}}" alt=""></td>

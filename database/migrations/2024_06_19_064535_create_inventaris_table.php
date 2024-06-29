@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('nama')->nullable(false);
             $table->string('kondisi')->nullable(false);
             $table->string('keterangan')->nullable();
-            $table->integer('stok')->nullable();
-            $table->string('jenis')->nullable(false);
-            $table->string('ruang')->nullable(false);
+            $table->integer('stok');
+            $table->unsignedBigInteger('penan')->nullable();
             $table->boolean('status')->default(0);
             $table->string('foto')->nullable();
             $table->timestamps();

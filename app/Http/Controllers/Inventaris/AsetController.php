@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Inventaris;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateInventarisRequest;
-use App\Http\Requests\UpdateInventarisRequest;
+use App\Http\Requests\AsetCreateRequest;
 use App\Models\Aset;
-use App\Models\Kategori;
-use App\Models\Gudang;
+use App\Models\Lokasi;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AsetUpdateRequest;
 
 class AsetController extends Controller
 {
@@ -16,22 +15,20 @@ class AsetController extends Controller
         return view('admin.inventaris.aset', compact('aset'));
     }
 
-    function create(){
-        $data = [
-            'jenis' => Kategori::all(),
-            'ruang' => Gudang::all()
-        ];
-        return response()->view('admin.inventaris.create-aset', $data);
+    function create()
+    {
+        $lokasi = Lokasi::all();
+        return response()->view('admin.inventaris.create-aset', compact('lokasi'));
     }
 
-    function store(CreateInventarisRequest $request){
+    function store(AsetCreateRequest $request){
         $aset = new Aset([
             'nama' => $request['name'],
             'kondisi' => $request['kondisi'],
             'keterangan' => $request['keterangan'],
             'stok' => $request['stok'],
-            'jenis' => $request['jenis'],
-            'ruang' => $request['ruang']
+            'lokasi_id' => $request['lokasi'],
+            'status' => $request['lokasi']
         ]);
 
         if ($request->hasFile('foto')) {
@@ -50,14 +47,13 @@ class AsetController extends Controller
     function edit($id){
         $data = [
             'aset' => Aset::where('id', $id)->first(),
-            'jenis' => Kategori::all(),
-            'ruang' => Gudang::all()
+            'lokasi' => Lokasi::all()
         ];
         return response()->view('admin.inventaris.edit-aset', $data);
 
     }
 
-    function update(UpdateInventarisRequest $request, $id)
+    function update(AsetUpdateRequest $request, $id)
     {
         $aset = Aset::where('id', $id)->first();
 
@@ -76,13 +72,9 @@ class AsetController extends Controller
         if($stok = $request->stok){
             $aset->stok = $stok;
         }
-        
-        if($jenis = $request->jenis){
-            $aset->jenis = $jenis;
-        }
 
-        if($ruang = $request->ruang){
-            $aset->ruang = $ruang;
+        if($lokasi = $request->lokasi){
+            $aset->lokasi = $lokasi;
         }
 
         if ($request->hasFile('foto')) {

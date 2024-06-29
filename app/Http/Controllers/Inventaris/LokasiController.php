@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Inventaris;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gudang;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 
 class GudangController extends Controller
 {
     function index(){
-        $gudang = Gudang::all();
+        $gudang = Lokasi::all();
         return view('admin.inventaris.gudang', compact('gudang'));
     }
 
@@ -19,12 +19,12 @@ class GudangController extends Controller
 
     function store(Request $request){
         $request->validate([
-            'nama_ruang' => ['required', 'max:20'],
+            'nama_gudang' => ['required', 'max:20'],
             'keterangan' => ['nullable', 'max:50']
         ]);
 
-        Gudang::create([
-            'nama_ruang' => $request->nama_ruang,
+        Lokasi::create([
+            'nama_gudang' => $request->nama_gudang,
             'keterangan' => $request->keterangan
         ]);
 
@@ -34,19 +34,19 @@ class GudangController extends Controller
 
     function edit($id)
     {
-        $gudang = Gudang::where('id', $id)->first();
+        $gudang = Lokasi::where('id', $id)->first();
         return view('admin.inventaris.edit-gudang', compact('gudang'));
     }
 
     function update($id, Request $request)
     {
         $request->validate([
-            'nama_ruang' => ['required', 'max:20'],
+            'nama_gudang' => ['required', 'max:20'],
             'keterangan' => ['nullable', 'max:50']
         ]);
 
-        $gudang = Gudang::where('id', $id)->first();
-        $gudang->nama_ruang = $request->nama_ruang;
+        $gudang = Lokasi::where('id', $id)->first();
+        $gudang->nama_gudang = $request->nama_gudang;
 
         if($keterangan = $request->keterangan){
             $gudang->keterangan = $keterangan;
@@ -58,7 +58,7 @@ class GudangController extends Controller
        }
 
     function destroy($id){
-        Gudang::find($id)->delete();
+        Lokasi::find($id)->delete();
         return redirect()->route('ruang.index')
         ->with('alert', 'success')->with('message', 'Berhasil hapus gudang inventaris');
     }

@@ -19,10 +19,6 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->unsignedBigInteger('pegawai_id');
             $table->timestamps();
-        
-            // Foreign key constraints
-            $table->foreign('peminjaman_id')->references('id')->on('peminjaman')->onDelete('cascade');
-            $table->foreign('pegawai_id')->references('id')->on('pegawai')->onDelete('cascade');
         });
     }
 

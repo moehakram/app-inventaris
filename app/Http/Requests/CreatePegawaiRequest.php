@@ -22,7 +22,7 @@ class CreatePegawaiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nip' => ['required', 'unique:pegawai,nip'],
+            'nra' => ['required', 'unique:pegawai,nra'],
             'name' => ['required', 'string','min:3', 'max:20'],
             'email' => ['required', 'email', 'unique:pegawai,email'],
             'phone_number' => ['nullable','min:5'],

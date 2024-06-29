@@ -25,4 +25,9 @@ class Aset extends Model
     {
         return $this->hasMany(Peminjaman::class, 'inventaris_id', 'id');
     }
+
+    public function lokasi()
+    {
+        return $this->belongsTo(Lokasi::class, 'lokasi_id');
+    }
 }
