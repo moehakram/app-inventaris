@@ -57,14 +57,14 @@ Route::middleware('auth')->group(function () {
     Route::get('inventaris/{id}/hapus', [AsetController::class, 'destroy'])->name('inventaris.destroy');
 });
 
-Route::middleware('auth')->controller(KategoriController::class)->group(function () {
-    Route::get('kategori', 'index')->name('jenis.index');
-    Route::get('kategori/create', 'create')->name('jenis.create');
-    Route::post('kategori', 'store')->name('jenis.store');
-    Route::get('kategori/{id}/edit','edit')->name('jenis.edit');
-    Route::put('kategori/{id}', 'update')->name('jenis.update');
-    Route::get('kategori/{id}/hapus', 'destroy')->name('jenis.destroy');
-});
+// Route::middleware('auth')->controller(KategoriController::class)->group(function () {
+//     Route::get('kategori', 'index')->name('jenis.index');
+//     Route::get('kategori/create', 'create')->name('jenis.create');
+//     Route::post('kategori', 'store')->name('jenis.store');
+//     Route::get('kategori/{id}/edit','edit')->name('jenis.edit');
+//     Route::put('kategori/{id}', 'update')->name('jenis.update');
+//     Route::get('kategori/{id}/hapus', 'destroy')->name('jenis.destroy');
+// });
 
 Route::controller(GudangController::class)->middleware('auth')->group(function () {
     Route::get('gudang', 'index')->name('ruang.index');

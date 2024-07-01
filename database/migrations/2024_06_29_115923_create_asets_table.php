@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventaris', function (Blueprint $table) {
+        Schema::create('aset', function (Blueprint $table) {
             $table->id();
+            $table->string('kode')->nullable();
             $table->string('nama')->nullable(false);
-            $table->string('kondisi')->nullable(false);
-            $table->string('keterangan')->nullable();
-            $table->integer('stok');
-            $table->unsignedBigInteger('penan')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('kategori')->nullable(false);
             $table->string('foto')->nullable();
             $table->timestamps();
         });
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventaris');
+        Schema::dropIfExists('aset');
     }
 };

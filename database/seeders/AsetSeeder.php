@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Inventaris;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class InventarisSeeder extends Seeder
+class AsetSeeder extends Seeder
 {
     /**
      * Run the database seeds.

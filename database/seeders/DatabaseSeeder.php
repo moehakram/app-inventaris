@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionRoleSeeder::class,
             UsersTableSeeder::class,
             Lokasi::class,
-            InventarisSeeder::class
+            AsetSeeder::class
         ]);
     }
 }

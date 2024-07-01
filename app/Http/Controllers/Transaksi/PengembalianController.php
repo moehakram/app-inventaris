@@ -21,7 +21,6 @@ class PengembalianController extends Controller
     function getData(Request $request){
 
         $peminjamanId = $request->input('peminjaman_id');
-        // Menggunakan model Peminjaman untuk mencari data
         $peminjaman = Peminjaman::with('inventaris')->find($peminjamanId);
         if ($peminjaman) {
             return response()->json(['nama_barang' => $peminjaman->inventaris->nama]);
@@ -93,8 +92,7 @@ class PengembalianController extends Controller
     {
         $pengembalian = Pengembalian::with('peminjaman')->find($id);
         if($pengembalian){
-            $pengembalian->peminjaman->status = 1;
-            $pengembalian->peminjaman->update();
+            $pengembalian->peminjaman()->update(['status', '1']);
             $pengembalian->delete();
             return redirect()->route('pengembalian.index')
             ->with('alert', 'success')->with('message', 'Berhasil hapus pengembalian inventaris');

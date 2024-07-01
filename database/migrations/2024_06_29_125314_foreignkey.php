@@ -11,10 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('inventaris', function (Blueprint $table) {
-            $table->foreign('lokasi_id')->on('lokasi')->references('id')->onDelete('cascade');
-        });
-        
         Schema::table('peminjaman', function (Blueprint $table) {
             $table->foreign('inventaris_id')->on('inventaris')->references('id')->onDelete('cascade');
             $table->foreign('pegawai_id')->on('pegawai')->references('id')->onDelete('cascade');
@@ -23,6 +19,20 @@ return new class extends Migration
         Schema::table('pengembalian', function (Blueprint $table) {
             $table->foreign('peminjaman_id')->references('id')->on('peminjaman')->onDelete('cascade');
             $table->foreign('pegawai_id')->references('id')->on('pegawai')->onDelete('cascade');
+        });
+        
+        Schema::table('detail_aset', function (Blueprint $table) {
+            $table->foreign('aset_id')->references('id')->on('aset')->onDelete('cascade');
+        });
+
+        Schema::table('riwayat_aset', function (Blueprint $table) {
+            $table->foreign('aset_id')->references('id')->on('aset')->onDelete('cascade');
+        });
+        Schema::table('pembelian_aset', function (Blueprint $table) {
+            $table->foreign('aset_id')->references('id')->on('aset')->onDelete('cascade');
+        });
+        Schema::table('aset_nonaktif', function (Blueprint $table) {
+            $table->foreign('aset_id')->references('id')->on('aset')->onDelete('cascade');
         });
     }
 

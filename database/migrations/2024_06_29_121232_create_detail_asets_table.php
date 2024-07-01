@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('riwayat_aset', function (Blueprint $table) {
+        Schema::create('detail_aset', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('aset_id')->nullable();
-            $table->date('tanggal')->nullable();
-            $table->string('penanggung_jawab');
-            $table->string('lokasi');
-            $table->string('qty');
-            $table->string('kondisi');
+            $table->unsignedBigInteger('aset_id')->nullable(false)->unique();
+            $table->string('merk')->nullable(false)->default();
+            $table->string('tipe')->nullable();
+            $table->string('no_seri')->nullable();
+            $table->string('tahun_produksi')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('riwayat_aset');
+        Schema::dropIfExists('detail_aset');
     }
 };

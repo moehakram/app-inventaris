@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Inventaris;
 
 use App\Http\Requests\AsetCreateRequest;
 use App\Models\Aset;
-use App\Models\Lokasi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AsetUpdateRequest;
 
@@ -17,8 +16,7 @@ class AsetController extends Controller
 
     function create()
     {
-        $lokasi = Lokasi::all();
-        return response()->view('admin.inventaris.create-aset', compact('lokasi'));
+        return response()->view('admin.inventaris.create-aset');
     }
 
     function store(AsetCreateRequest $request){
@@ -47,7 +45,6 @@ class AsetController extends Controller
     function edit($id){
         $data = [
             'aset' => Aset::where('id', $id)->first(),
-            'lokasi' => Lokasi::all()
         ];
         return response()->view('admin.inventaris.edit-aset', $data);
 

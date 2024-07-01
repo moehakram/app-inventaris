@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('riwayat_aset', function (Blueprint $table) {
+        Schema::create('pembelian_aset', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('aset_id')->nullable();
+            $table->unsignedBigInteger('aset_id')->nullable()->unique();
             $table->date('tanggal')->nullable();
-            $table->string('penanggung_jawab');
-            $table->string('lokasi');
-            $table->string('qty');
-            $table->string('kondisi');
+            $table->string('distributor')->nullable();
+            $table->string('invoice')->nullable();
+            $table->integer('qty')->nullable()->default(1);
+            $table->string('harga_satuan')->nullable();
+            $table->string('harga_total')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('riwayat_aset');
+        Schema::dropIfExists('pembelian_aset');
     }
 };

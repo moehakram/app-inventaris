@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lokasi', function (Blueprint $table) {
+        Schema::create('aset_nonaktif', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('keterangan')->nullable();
+            $table->unsignedBigInteger('aset_id')->unique();
+            $table->date('tanggal');
+            $table->date('sebab'); // non-aktif; keberadaan aset {dijual, dihibahkan, hilang, atau dibuang}
+            $table->date('keterangan');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lokasi');
+        Schema::dropIfExists('aset_nonaktif');
     }
 };

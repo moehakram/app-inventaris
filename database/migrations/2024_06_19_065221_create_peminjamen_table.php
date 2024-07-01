@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('inventaris_id');
             $table->string('nama_peminjam');
-            $table->date('tgl_pinjam');
-            $table->integer('jum_pinjam');
-            $table->boolean('status')->default(1);
+            $table->date('tanggal');
+            $table->integer('jumlah');
             $table->string('keterangan')->nullable();
-            $table->unsignedBigInteger('pegawai_id');
+            $table->unsignedBigInteger('pengurus_id');
             $table->timestamps();
         });
     }
