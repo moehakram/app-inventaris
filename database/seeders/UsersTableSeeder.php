@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'nra' => '0000',
             'nama' => 'admin',
-            'email' => 'admin@mail.com',
+            'email' => 'admin@email.com',
             'phone_number' => '081234567890',
             'alamat' => 'Jl. Perintis 7',
             'organisasi_id' => 1,
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'nra' => '0001',
             'nama' => 'akram',
-            'email' => 'akram@mail.com',
+            'email' => 'akram@email.com',
             'phone_number' => '081234567890',
             'alamat' => 'Jl. Perintis 7',
             'organisasi_id' => 2,
