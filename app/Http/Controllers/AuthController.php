@@ -18,16 +18,16 @@ class AuthController extends Controller
 
     function login(Request $request) {
         // Validate the request
-        $request->validate([
+        $data = $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
-    
-        $credentials = $request->only('username', 'password');
-    
-        $loginType = filter_var($credentials['username'], FILTER_VALIDATE_EMAIL) ? 'email' : 'nra';
-        $credentials[$loginType] = $credentials['username'];
-        unset($credentials['username']);
+        
+        $loginType = filter_var($data['username'], FILTER_VALIDATE_EMAIL) ? 'email' : 'nra';
+        $credentials = [
+            $loginType => $data['username'],
+            'password' => $data['password']
+        ];
     
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
